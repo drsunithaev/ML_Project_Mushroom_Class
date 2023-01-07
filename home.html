@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Mushroom Classification</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Boston House Price Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <input type="text" name="cap_shape" placeholder="cap-shape" required="required" /><br>
+    	<input type="text" name="cap_surface" placeholder="cap-surface" required="required" /><br>
+        <input type="text" name="cap_color" placeholder="cap-color" required="required" /><br>
+        <input type="text" name="bruises" placeholder="bruises" required="required" /><br>
+        <input type="text" name="odor" placeholder="odor" required="required" /><br>
+        <input type="text" name="gill_attachment" placeholder="gill-attachment" required="required" /><br>
+        <input type="text" name="gill_spacing" placeholder="gill-spacing" required="required" /><br>
+        <input type="text" name="gill_size" placeholder="gill-size" required="required" /><br>
+        <input type="text" name="gill_color" placeholder="gill-color" required="required" /><br>
+        <input type="text" name="stalk_shape" placeholder="stalk-shape" required="required" /><br>
+        <input type="text" name="stalk_root" placeholder="stalk-root" required="required" /><br>
+        <input type="text" name="stalk_surface_above_ring" placeholder="stalk-surface-above-ring" required="required" /><br>
+        <input type="text" name="stalk_surface_below_ring" placeholder="stalk-surface-below-ring" required="required" /><br>
+        <input type="text" name="stalk_color_above_ring" placeholder="stalk-color-above-ring" required="required" /><br>
+        <input type="text" name="stalk_color_below_ring" placeholder="stalk-color-below-ring" required="required" /><br>
+        <input type="text" name="veil_type" placeholder="veil-type" required="required" /><br>
+        <input type="text" name="veil_color" placeholder="veil-color" required="required" /><br>
+        <input type="text" name="ring_number " placeholder="ring-number" required="required" /><br>
+        <input type="text" name="ring_type" placeholder="ring-type" required="required" /><br>
+        <input type="text" name="spore_print_color" placeholder="spore-print-color" required="required" /><br>
+        <input type="text" name="population" placeholder="population" required="required" /><br>
+        <input type="text" name="habitat" placeholder="habitat" required="required" /><br>
+
+       
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+  
+   
+ </div>
+ {{prediction_text}}
+
+</body>
+</html>

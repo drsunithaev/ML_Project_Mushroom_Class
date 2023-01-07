@@ -1,0 +1,12 @@
+pandas
+seaborn
+numpy
+statistics
+fastapi
+uvicorn
+onnx
+onnxruntime
+matplotlib
+scikit-learn==0.20.3
+xgboost
+catboost
