@@ -10,3 +10,4 @@ matplotlib
 scikit-learn==0.20.3
 xgboost
 catboost
+pickle
