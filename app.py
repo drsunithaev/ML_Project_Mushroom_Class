@@ -24,13 +24,6 @@ def index():
     return templates.TemplateResponse('home.html')
 	#return render_template('home.html')
 
-#---------------------------------------
-# Update the following API 
-#---------------------------------------
-
-
-
-
 @app.post('/predict_api')
 def predict_api(data : MushroomVariables):
     data = data.dict()
@@ -68,7 +61,7 @@ def predict_api(data : MushroomVariables):
     
     return {'prediction': prediction}
 
-
+'''
 @app.route('/predict', methods = ['POST'])
 def predict():
     data = [float(x) for x in request.form.values()]
@@ -79,3 +72,5 @@ def predict():
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
+
+    '''
