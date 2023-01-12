@@ -52,7 +52,7 @@ def predict_api(data : MushroomVariables):
     population = data['population']
     habitat = data['habitat']
 
-    data_to_pred = numpy.array([[cap_shape, cap_surface, cap_color,bruises , odor, gill_attachment, gill_spacing ,gill_size ,gill_color , stalk_shape, stalk_root , stalk_surface_above_ring , stalk_surface_below_ring , stalk_color_above_ring , stalk_color_below_ring, veil_type , veil_color , ring_number , ring_type , spore_print_color , population ,habitat]])
+    data_to_pred = np.array([[cap_shape, cap_surface, cap_color,bruises , odor, gill_attachment, gill_spacing ,gill_size ,gill_color , stalk_shape, stalk_root , stalk_surface_above_ring , stalk_surface_below_ring , stalk_color_above_ring , stalk_color_below_ring, veil_type , veil_color , ring_number , ring_type , spore_print_color , population ,habitat]])
     output = rf_model.predict(data_to_pred)
     if output[0] ==1:
         prediction = "Edible"
