@@ -5,7 +5,7 @@ from fastapi import FastAPI
 import pickle
 import onnxruntime as rt
 from fastapi.templating import Jinja2Templates
-
+from variables import MushroomVariables
 
 #app = Flask(__name__)
 # Create application object
@@ -28,15 +28,46 @@ def index():
 # Update the following API 
 #---------------------------------------
 
-@app.route('/predict_api', methods = ['POST'])
-def predict_api():
-    data = request.json['data']
-    print(data)
-    print(np.array(list(data.values())).reshape(1,-1))
-    new_data = scaler.transform(np.array(list(data.values())).reshape(1,-1))
-    output = reg_model.predict(new_data)
-    print(output[0])
-    return jsonify(output[0])
+
+
+
+@app.post('/predict_api')
+def predict_api(data : MushroomVariables):
+    data = data.dict()
+
+    # fetch input data using data variables
+    cap_shape = data['cap_shape']
+    cap_surface = data['cap_surface']
+    cap_color = data['cap_color']
+    bruises = data['bruises']
+    odor = data['odor']
+    gill_attachment = data['gill_attachment']
+    gill_spacing = data['gill_spacing']
+    gill_size = data['gill_size']
+    gill_color = data['gill_color']
+    stalk_shape = data['stalk_shape']
+    stalk_root = data['stalk_root']
+    stalk_surface_above_ring = data['stalk_surface_above_ring']
+    stalk_surface_below_ring = data['stalk_surface_below_ring']
+    stalk_color_above_ring = data['stalk_color_above_ring']
+    stalk_color_below_ring = data['stalk_color_below_ring']
+    veil_type = data['veil_type']
+    veil_color = data['veil_color']
+    ring_number = data['ring_number']
+    ring_type = data['ring_type']
+    spore_print_color = data['spore_print_color']
+    population = data['population']
+    habitat = data['habitat']
+
+    data_to_pred = numpy.array([[cap_shape, cap_surface, cap_color,bruises , odor, gill_attachment, gill_spacing ,gill_size ,gill_color , stalk_shape, stalk_root , stalk_surface_above_ring , stalk_surface_below_ring , stalk_color_above_ring , stalk_color_below_ring, veil_type , veil_color , ring_number , ring_type , spore_print_color , population ,habitat]])
+    output = rf_model.predict(data_to_pred)
+    if output[0] ==1:
+        prediction = "Edible"
+    else:
+        prediction = "Poisonous"
+    
+    return {'prediction': prediction}
+
 
 @app.route('/predict', methods = ['POST'])
 def predict():
