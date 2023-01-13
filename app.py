@@ -5,6 +5,7 @@ from fastapi import FastAPI
 import pickle
 import onnxruntime as rt
 from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
 from variables import MushroomVariables
 
 #app = Flask(__name__)
@@ -59,7 +60,7 @@ def predict_api(data : MushroomVariables):
     else:
         prediction = "Poisonous"
     
-    return {'prediction': prediction}
+    return {'prediction_text': prediction}
 
 '''
 @app.route('/predict', methods = ['POST'])
