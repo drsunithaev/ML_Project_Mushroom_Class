@@ -62,6 +62,9 @@ def predict_api(data : MushroomVariables):
     
     return {'prediction_text': prediction}
 
+
+
+
 '''
 @app.route('/predict', methods = ['POST'])
 def predict():
