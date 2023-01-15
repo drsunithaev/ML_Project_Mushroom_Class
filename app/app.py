@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import uvicorn
 from fastapi import FastAPI
-import pickle
+import pickle as pickle
 import onnxruntime as rt
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
