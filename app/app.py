@@ -9,8 +9,6 @@ from fastapi.responses import HTMLResponse
 from variables import MushroomVariables
 
 
-
-#app = Flask(__name__)
 # Create application object
 app = FastAPI()
 
