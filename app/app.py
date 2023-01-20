@@ -16,7 +16,6 @@ templates = Jinja2Templates(directory="templates")
 
 ## Load the model
 rf_model = pickle.load(open('final_RF_model.pkl','rb'))
-#scaler = pickle.load(open('scaling.pkl','rb'))
 
 
 # API endpoints
