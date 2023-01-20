@@ -7,7 +7,7 @@ import onnxruntime as rt
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from variables import MushroomVariables
-
+from fastapi import Request
 
 # Create application object
 app = FastAPI()
@@ -20,13 +20,13 @@ rf_model = pickle.load(open('final_RF_model.pkl','rb'))
 
 
 # API endpoints
-@app.get('/')
-def index():
-    return templates.TemplateResponse('home.html')
+@app.get('/', response_class=HTMLResponse)
+def index(request: Request):
+    return templates.TemplateResponse('home.html', {"request": request})
 	#return render_template('home.html')
 
-@app.post('/predict_api')
-def predict_api(data : MushroomVariables):
+@app.post('/predict_api', response_class=HTMLResponse)
+def predict_api(data : MushroomVariables, request: Request):
     data = data.dict()
 
     # fetch input data using data variables
